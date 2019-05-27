@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
+});
+
+Route::group(['prefix' => 'cars'], function() {
+    Route::get('{category?}', 'CarsController@show');
+    Route::get('{category?}/page-{page?}', 'CarsController@show');
+    Route::get('{category?}/page-{page?}/year-{year?}', 'CarsController@show');
 });
